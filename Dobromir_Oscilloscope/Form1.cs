@@ -154,8 +154,9 @@ namespace Dobromir_Oscilloscope
                 x2 = rect.Left;
                 y2 = rect.Bottom;
             }
+            //TO DO: Ekran - kvadrat; distance - do 2 znaka; purvata liniq da ne se svurzva s 0;
             // Calculate the distance between points
-            double distance = (int)Math.Round(Math.Sqrt((double)((((Math.Pow(x1 / (double)ratioX - x2 / (double)ratioX, 2))) + (Math.Pow(y1 / (double)ratioX - y2 / (double)ratioX, 2)))))); //(int)Math.Round(Math.Sqrt((double)((((decimal)(Math.Pow(x1 - x2, 2))/ratioX) + (decimal)(Math.Pow(y1 - y2, 2))/ratioY) ) ) );
+            double distance = Math.Sqrt((double)((((Math.Pow(x1 / (double)ratioX - x2 / (double)ratioX, 2))) + (Math.Pow(y1 / (double)ratioX - y2 / (double)ratioX, 2))))); //(int)Math.Round(Math.Sqrt((double)((((decimal)(Math.Pow(x1 - x2, 2))/ratioX) + (decimal)(Math.Pow(y1 - y2, 2))/ratioY) ) ) );
             label_Distance_Current.Text = (distance).ToString();
             total_distance += distance;
             label_Distance_Total.Text = total_distance.ToString();
