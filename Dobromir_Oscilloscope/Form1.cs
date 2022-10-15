@@ -17,7 +17,7 @@ namespace Dobromir_Oscilloscope
         static Graphics g_new = null;
         static Rectangle pointRectOld = Rectangle.Empty;
         static Point pt1Old,pt2Old;
-        static double total_distance = -1;
+        static double total_distance = 0;
 
         private void Draw_Click(object sender, EventArgs e)
         {
@@ -89,7 +89,7 @@ namespace Dobromir_Oscilloscope
             var pt_x_x2 = pt_x_x1;
             var pt_x_y2 = offset + pt_x_y1;
 
-            for (int i = 0; i < x_Max / 5; i++)
+            for (int i = -1; i < x_Max / 5; i++)
             {
                 var pt_x_1 = new Point(pt_x_x1, pt_x_y1);
                 var pt_x_2 = new Point(pt_x_x2, pt_x_y2);
@@ -104,7 +104,7 @@ namespace Dobromir_Oscilloscope
             var pt_y_x2 = pt_y_x1 - offset;
             var pt_y_y2 = pt_y_y1;
 
-            for (int i = 0; i < y_Max / 5; i++)
+            for (int i = -1; i < y_Max / 5; i++)
             {
                 var pt_y_1 = new Point(pt_y_x1, pt_y_y1);
                 var pt_y_2 = new Point(pt_y_x2, pt_y_y2);
@@ -141,25 +141,24 @@ namespace Dobromir_Oscilloscope
             // Draw the line to connect the points 
             var pen = new Pen(Color.Green, 1);
             Point pt1 = (pointRectOld.Location + pointRectOld.Size / 2);
-            if (pointRectOld.IsEmpty)
-                pt1 = new Point(rect.Left, rect.Bottom);
             Point pt2 = (pointRect.Location + pointRect.Size / 2);
+            if (pointRectOld.IsEmpty)
+                pt1 = pt2;
             g.DrawLine(pen, pt1, pt2);
             var x1 = pointRect.X;
             var x2 = pointRectOld.X;
             var y1 = pointRect.Y;
             var y2 = pointRectOld.Y;
-            if (pointRectOld.IsEmpty)
-            {
-                x2 = rect.Left;
-                y2 = rect.Bottom;
-            }
-            //TO DO: Ekran - kvadrat; distance - do 2 znaka; purvata liniq da ne se svurzva s 0;
+
+            //TO DO: Ekran - kvadrat;
             // Calculate the distance between points
-            double distance = Math.Sqrt((double)((((Math.Pow(x1 / (double)ratioX - x2 / (double)ratioX, 2))) + (Math.Pow(y1 / (double)ratioX - y2 / (double)ratioX, 2))))); //(int)Math.Round(Math.Sqrt((double)((((decimal)(Math.Pow(x1 - x2, 2))/ratioX) + (decimal)(Math.Pow(y1 - y2, 2))/ratioY) ) ) );
-            label_Distance_Current.Text = (distance).ToString();
+            double distance = 0;
+            if (point_Count != 2)
+                distance = Math.Sqrt(Math.Pow(x1 / (double)ratioX - x2 / (double)ratioX, 2)
+                                        + Math.Pow(y1 / (double)ratioX - y2 / (double)ratioX, 2));
+            label_Distance_Current.Text = (distance).ToString("F2");
             total_distance += distance;
-            label_Distance_Total.Text = total_distance.ToString();
+            label_Distance_Total.Text = total_distance.ToString("F2");
             pointRectOld = pointRect;
             pt1Old = pt1;
             pt2Old = pt2;
@@ -172,7 +171,7 @@ namespace Dobromir_Oscilloscope
             label_Distance_Current.Text = "N/A";
             label_Distance_Total.Text = "N/A";
             isGraphDrawn = false;
-            total_distance = -1;
+            total_distance = 0;
             point_Count = 1;
             pointRectOld = Rectangle.Empty;
             g_new = null;
