@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Drawing;
-using System.Numerics;
-using System.Security.Cryptography.Xml;
 using System.Windows.Forms;
 
 namespace Dobromir_Oscilloscope
@@ -18,7 +16,8 @@ namespace Dobromir_Oscilloscope
         static byte point_Count = 1;
         static Graphics g_new = null;
         static Rectangle pointRectOld = Rectangle.Empty;
-        static double total_distance = 0;
+        static Point pt1Old,pt2Old;
+        static double total_distance = -1;
 
         private void Draw_Click(object sender, EventArgs e)
         {
@@ -59,7 +58,7 @@ namespace Dobromir_Oscilloscope
             var pointX = offset + (int)Math.Round(x * ratio);
             var pointY = offset + (int)Math.Round((y_Max - y) * ratio);
             var pointRect = new Rectangle(pointX - 3, pointY - 3, 5, 5);
-            
+
 
             // Draw the rectangle and point
             var g = pictureBox.CreateGraphics();
@@ -118,6 +117,11 @@ namespace Dobromir_Oscilloscope
 
         private void Draw_Point(Rectangle pointRect, Graphics g)
         {
+            // Draw over the OLD point
+            var penOld = new Pen(Color.Black, 2);
+            if (!pointRectOld.IsEmpty)
+                g.DrawEllipse(penOld, pointRectOld);
+
             // Draw the point
             var pen = new Pen(Color.Green, 2);
             g.DrawEllipse(pen, pointRect);
@@ -129,11 +133,16 @@ namespace Dobromir_Oscilloscope
 
         private void Draw_Line(Rectangle pointRect, Graphics g, decimal ratio, decimal ratioX, decimal ratioY, Rectangle rect)
         {
+            // Draw over the OLD line to connect the points 
+            var penOld = new Pen(Color.Black, 1);
+            if (!pt1Old.IsEmpty)
+                g.DrawLine(penOld, pt1Old, pt2Old);
+
             // Draw the line to connect the points 
             var pen = new Pen(Color.Green, 1);
             Point pt1 = (pointRectOld.Location + pointRectOld.Size / 2);
             if (pointRectOld.IsEmpty)
-                pt1 = new Point(rect.Left,rect.Bottom);
+                pt1 = new Point(rect.Left, rect.Bottom);
             Point pt2 = (pointRect.Location + pointRect.Size / 2);
             g.DrawLine(pen, pt1, pt2);
             var x1 = pointRect.X;
@@ -141,14 +150,18 @@ namespace Dobromir_Oscilloscope
             var y1 = pointRect.Y;
             var y2 = pointRectOld.Y;
             if (pointRectOld.IsEmpty)
+            {
                 x2 = rect.Left;
                 y2 = rect.Bottom;
-            //TO DO - CALCULATE THE DISTANCE CORRECTLY!!
-            double distance = (int)Math.Round(Math.Sqrt((double)((((decimal)(Math.Pow(x1 - x2, 2))/ratioX) + (decimal)(Math.Pow(y1 - y2, 2))/ratioY) ) ) ); //(int)Math.Round(Math.Sqrt((double)((((decimal)(Math.Pow(x1 - x2, 2))/ratioX) + (decimal)(Math.Pow(y1 - y2, 2))/ratioY) ) ) );
+            }
+            // Calculate the distance between points
+            double distance = (int)Math.Round(Math.Sqrt((double)((((Math.Pow(x1 / (double)ratioX - x2 / (double)ratioX, 2))) + (Math.Pow(y1 / (double)ratioX - y2 / (double)ratioX, 2)))))); //(int)Math.Round(Math.Sqrt((double)((((decimal)(Math.Pow(x1 - x2, 2))/ratioX) + (decimal)(Math.Pow(y1 - y2, 2))/ratioY) ) ) );
             label_Distance_Current.Text = (distance).ToString();
             total_distance += distance;
-            label_Distance_Total.Text = ratioX.ToString() + " " + ratioY.ToString();
+            label_Distance_Total.Text = total_distance.ToString();
             pointRectOld = pointRect;
+            pt1Old = pt1;
+            pt2Old = pt2;
         }
 
         private void button_Clear_Click(object sender, EventArgs e)
@@ -158,10 +171,11 @@ namespace Dobromir_Oscilloscope
             label_Distance_Current.Text = "N/A";
             label_Distance_Total.Text = "N/A";
             isGraphDrawn = false;
-            total_distance = 0;
+            total_distance = -1;
             point_Count = 1;
             pointRectOld = Rectangle.Empty;
-
+            g_new = null;
+            pt1Old = pt2Old = Point.Empty;
         }
 
     }

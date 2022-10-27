@@ -272,7 +272,7 @@ namespace Dobromir_Oscilloscope
             this.label_Point.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label_Point.Location = new System.Drawing.Point(15, 172);
             this.label_Point.Name = "label_Point";
-            this.label_Point.Size = new System.Drawing.Size(46, 20);
+            this.label_Point.Size = new System.Drawing.Size(45, 20);
             this.label_Point.TabIndex = 16;
             this.label_Point.Text = "Point:";
             // 
@@ -294,7 +294,7 @@ namespace Dobromir_Oscilloscope
             this.label3.Location = new System.Drawing.Point(45, 65);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(29, 15);
+            this.label3.Size = new System.Drawing.Size(30, 15);
             this.label3.TabIndex = 18;
             this.label3.Text = "max";
             // 
@@ -305,7 +305,7 @@ namespace Dobromir_Oscilloscope
             this.label7.Location = new System.Drawing.Point(45, 123);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(29, 15);
+            this.label7.Size = new System.Drawing.Size(30, 15);
             this.label7.TabIndex = 20;
             this.label7.Text = "max";
             // 
@@ -326,7 +326,7 @@ namespace Dobromir_Oscilloscope
             this.label_Total.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label_Total.Location = new System.Drawing.Point(45, 346);
             this.label_Total.Name = "label_Total";
-            this.label_Total.Size = new System.Drawing.Size(46, 20);
+            this.label_Total.Size = new System.Drawing.Size(45, 20);
             this.label_Total.TabIndex = 21;
             this.label_Total.Text = "Total:";
             // 
@@ -418,6 +418,7 @@ namespace Dobromir_Oscilloscope
             this.Controls.Add(this.numericUpDown_Y_Min);
             this.Controls.Add(this.numericUpDown_X_Max);
             this.Controls.Add(this.numericUpDown_X_Min);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "Oscilloscope Test";
