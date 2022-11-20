@@ -30,206 +30,43 @@ namespace Dobromir_Oscilloscope
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.numericUpDown_X_Min = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown_X_Max = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown_Y_Min = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown_Y_Max = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown_X = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown_Y = new System.Windows.Forms.NumericUpDown();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
+            this.numericUpDown_Point_Count = new System.Windows.Forms.NumericUpDown();
             this.buttonDraw = new System.Windows.Forms.Button();
             this.label_Distance_Total = new System.Windows.Forms.Label();
             this.label_Min_Max = new System.Windows.Forms.Label();
-            this.label_Point = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
             this.label_Total = new System.Windows.Forms.Label();
             this.label_Total1 = new System.Windows.Forms.Label();
             this.label_Distance_Current = new System.Windows.Forms.Label();
             this.pictureBox = new System.Windows.Forms.PictureBox();
             this.button_Clear = new System.Windows.Forms.Button();
             this.label_Point_Count = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_X_Min)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_X_Max)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Y_Min)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Y_Max)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_X)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Y)).BeginInit();
+            this.label1 = new System.Windows.Forms.Label();
+            this.numericUpDown_Delay = new System.Windows.Forms.NumericUpDown();
+            this.label2 = new System.Windows.Forms.Label();
+            this.textBox_File_Name = new System.Windows.Forms.TextBox();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Point_Count)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Delay)).BeginInit();
             this.SuspendLayout();
             // 
-            // numericUpDown_X_Min
+            // numericUpDown_Point_Count
             // 
-            this.numericUpDown_X_Min.DecimalPlaces = 1;
-            this.numericUpDown_X_Min.Location = new System.Drawing.Point(77, 33);
-            this.numericUpDown_X_Min.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.numericUpDown_X_Min.Maximum = new decimal(new int[] {
+            this.numericUpDown_Point_Count.Location = new System.Drawing.Point(15, 33);
+            this.numericUpDown_Point_Count.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.numericUpDown_Point_Count.Maximum = new decimal(new int[] {
             100000,
             0,
             0,
             0});
-            this.numericUpDown_X_Min.Name = "numericUpDown_X_Min";
-            this.numericUpDown_X_Min.Size = new System.Drawing.Size(51, 23);
-            this.numericUpDown_X_Min.TabIndex = 0;
-            // 
-            // numericUpDown_X_Max
-            // 
-            this.numericUpDown_X_Max.DecimalPlaces = 1;
-            this.numericUpDown_X_Max.Location = new System.Drawing.Point(77, 63);
-            this.numericUpDown_X_Max.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.numericUpDown_X_Max.Maximum = new decimal(new int[] {
-            100000,
+            this.numericUpDown_Point_Count.Name = "numericUpDown_Point_Count";
+            this.numericUpDown_Point_Count.Size = new System.Drawing.Size(113, 23);
+            this.numericUpDown_Point_Count.TabIndex = 0;
+            this.numericUpDown_Point_Count.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.numericUpDown_Point_Count.Value = new decimal(new int[] {
+            1000,
             0,
             0,
             0});
-            this.numericUpDown_X_Max.Minimum = new decimal(new int[] {
-            100000,
-            0,
-            0,
-            -2147483648});
-            this.numericUpDown_X_Max.Name = "numericUpDown_X_Max";
-            this.numericUpDown_X_Max.Size = new System.Drawing.Size(51, 23);
-            this.numericUpDown_X_Max.TabIndex = 1;
-            this.numericUpDown_X_Max.Value = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
-            // 
-            // numericUpDown_Y_Min
-            // 
-            this.numericUpDown_Y_Min.DecimalPlaces = 1;
-            this.numericUpDown_Y_Min.Location = new System.Drawing.Point(77, 92);
-            this.numericUpDown_Y_Min.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.numericUpDown_Y_Min.Maximum = new decimal(new int[] {
-            100000,
-            0,
-            0,
-            0});
-            this.numericUpDown_Y_Min.Name = "numericUpDown_Y_Min";
-            this.numericUpDown_Y_Min.Size = new System.Drawing.Size(51, 23);
-            this.numericUpDown_Y_Min.TabIndex = 2;
-            // 
-            // numericUpDown_Y_Max
-            // 
-            this.numericUpDown_Y_Max.DecimalPlaces = 1;
-            this.numericUpDown_Y_Max.Location = new System.Drawing.Point(77, 121);
-            this.numericUpDown_Y_Max.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.numericUpDown_Y_Max.Maximum = new decimal(new int[] {
-            100000,
-            0,
-            0,
-            0});
-            this.numericUpDown_Y_Max.Minimum = new decimal(new int[] {
-            100000,
-            0,
-            0,
-            -2147483648});
-            this.numericUpDown_Y_Max.Name = "numericUpDown_Y_Max";
-            this.numericUpDown_Y_Max.Size = new System.Drawing.Size(51, 23);
-            this.numericUpDown_Y_Max.TabIndex = 3;
-            this.numericUpDown_Y_Max.Value = new decimal(new int[] {
-            40,
-            0,
-            0,
-            0});
-            // 
-            // numericUpDown_X
-            // 
-            this.numericUpDown_X.DecimalPlaces = 1;
-            this.numericUpDown_X.Increment = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
-            this.numericUpDown_X.Location = new System.Drawing.Point(77, 196);
-            this.numericUpDown_X.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.numericUpDown_X.Maximum = new decimal(new int[] {
-            100000,
-            0,
-            0,
-            0});
-            this.numericUpDown_X.Minimum = new decimal(new int[] {
-            100000,
-            0,
-            0,
-            -2147483648});
-            this.numericUpDown_X.Name = "numericUpDown_X";
-            this.numericUpDown_X.Size = new System.Drawing.Size(51, 23);
-            this.numericUpDown_X.TabIndex = 4;
-            // 
-            // numericUpDown_Y
-            // 
-            this.numericUpDown_Y.DecimalPlaces = 1;
-            this.numericUpDown_Y.Increment = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
-            this.numericUpDown_Y.Location = new System.Drawing.Point(77, 225);
-            this.numericUpDown_Y.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.numericUpDown_Y.Maximum = new decimal(new int[] {
-            100000,
-            0,
-            0,
-            0});
-            this.numericUpDown_Y.Minimum = new decimal(new int[] {
-            100000,
-            0,
-            0,
-            -2147483648});
-            this.numericUpDown_Y.Name = "numericUpDown_Y";
-            this.numericUpDown_Y.Size = new System.Drawing.Size(51, 23);
-            this.numericUpDown_Y.TabIndex = 5;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(15, 47);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(32, 21);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "x =";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(15, 109);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(33, 21);
-            this.label4.TabIndex = 8;
-            this.label4.Text = "y =";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label5.Location = new System.Drawing.Point(38, 198);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(32, 21);
-            this.label5.TabIndex = 11;
-            this.label5.Text = "x =";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label6.Location = new System.Drawing.Point(38, 227);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(33, 21);
-            this.label6.TabIndex = 10;
-            this.label6.Text = "y =";
             // 
             // buttonDraw
             // 
@@ -260,65 +97,11 @@ namespace Dobromir_Oscilloscope
             // 
             this.label_Min_Max.AutoSize = true;
             this.label_Min_Max.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label_Min_Max.Location = new System.Drawing.Point(15, 9);
+            this.label_Min_Max.Location = new System.Drawing.Point(26, 9);
             this.label_Min_Max.Name = "label_Min_Max";
-            this.label_Min_Max.Size = new System.Drawing.Size(117, 20);
+            this.label_Min_Max.Size = new System.Drawing.Size(86, 20);
             this.label_Min_Max.TabIndex = 15;
-            this.label_Min_Max.Text = "Min, Max values:";
-            // 
-            // label_Point
-            // 
-            this.label_Point.AutoSize = true;
-            this.label_Point.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label_Point.Location = new System.Drawing.Point(15, 172);
-            this.label_Point.Name = "label_Point";
-            this.label_Point.Size = new System.Drawing.Size(45, 20);
-            this.label_Point.TabIndex = 16;
-            this.label_Point.Text = "Point:";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(46, 36);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(28, 15);
-            this.label2.TabIndex = 17;
-            this.label2.Text = "min";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(45, 65);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(30, 15);
-            this.label3.TabIndex = 18;
-            this.label3.Text = "max";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label7.Location = new System.Drawing.Point(45, 123);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(30, 15);
-            this.label7.TabIndex = 20;
-            this.label7.Text = "max";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label8.Location = new System.Drawing.Point(46, 94);
-            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(28, 15);
-            this.label8.TabIndex = 19;
-            this.label8.Text = "min";
+            this.label_Min_Max.Text = "Point count:";
             // 
             // label_Total
             // 
@@ -388,47 +171,86 @@ namespace Dobromir_Oscilloscope
             this.label_Point_Count.TabIndex = 25;
             this.label_Point_Count.Text = "point #: 0";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(12, 59);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(117, 20);
+            this.label1.TabIndex = 27;
+            this.label1.Text = "Delay (seconds):";
+            // 
+            // numericUpDown_Delay
+            // 
+            this.numericUpDown_Delay.DecimalPlaces = 1;
+            this.numericUpDown_Delay.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.numericUpDown_Delay.Location = new System.Drawing.Point(15, 83);
+            this.numericUpDown_Delay.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.numericUpDown_Delay.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
+            this.numericUpDown_Delay.Name = "numericUpDown_Delay";
+            this.numericUpDown_Delay.Size = new System.Drawing.Size(113, 23);
+            this.numericUpDown_Delay.TabIndex = 26;
+            this.numericUpDown_Delay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.numericUpDown_Delay.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label2.Location = new System.Drawing.Point(33, 109);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(76, 20);
+            this.label2.TabIndex = 29;
+            this.label2.Text = "File name:";
+            // 
+            // textBox_File_Name
+            // 
+            this.textBox_File_Name.Location = new System.Drawing.Point(15, 132);
+            this.textBox_File_Name.Name = "textBox_File_Name";
+            this.textBox_File_Name.PlaceholderText = "Empty - no file";
+            this.textBox_File_Name.Size = new System.Drawing.Size(113, 23);
+            this.textBox_File_Name.TabIndex = 30;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(585, 461);
+            this.Controls.Add(this.textBox_File_Name);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.numericUpDown_Delay);
             this.Controls.Add(this.label_Point_Count);
             this.Controls.Add(this.button_Clear);
             this.Controls.Add(this.label_Total1);
             this.Controls.Add(this.label_Distance_Current);
             this.Controls.Add(this.label_Total);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label_Point);
             this.Controls.Add(this.label_Min_Max);
             this.Controls.Add(this.pictureBox);
             this.Controls.Add(this.label_Distance_Total);
             this.Controls.Add(this.buttonDraw);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.numericUpDown_Y);
-            this.Controls.Add(this.numericUpDown_X);
-            this.Controls.Add(this.numericUpDown_Y_Max);
-            this.Controls.Add(this.numericUpDown_Y_Min);
-            this.Controls.Add(this.numericUpDown_X_Max);
-            this.Controls.Add(this.numericUpDown_X_Min);
+            this.Controls.Add(this.numericUpDown_Point_Count);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "Oscilloscope Test";
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_X_Min)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_X_Max)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Y_Min)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Y_Max)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_X)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Y)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Point_Count)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Delay)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -436,30 +258,20 @@ namespace Dobromir_Oscilloscope
 
         #endregion
 
-        private System.Windows.Forms.NumericUpDown numericUpDown_X_Min;
-        private System.Windows.Forms.NumericUpDown numericUpDown_X_Max;
-        private System.Windows.Forms.NumericUpDown numericUpDown_Y_Min;
-        private System.Windows.Forms.NumericUpDown numericUpDown_Y_Max;
-        private System.Windows.Forms.NumericUpDown numericUpDown_X;
-        private System.Windows.Forms.NumericUpDown numericUpDown_Y;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.NumericUpDown numericUpDown_Point_Count;
         private System.Windows.Forms.Button buttonDraw;
         private System.Windows.Forms.Label label_Distance_Total;
         private System.Windows.Forms.Label label_Min_Max;
-        private System.Windows.Forms.Label label_Point;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label_Total;
         private System.Windows.Forms.Label label_Total1;
         private System.Windows.Forms.Label label_Distance_Current;
         private System.Windows.Forms.PictureBox pictureBox;
         private System.Windows.Forms.Button button_Clear;
         private System.Windows.Forms.Label label_Point_Count;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.NumericUpDown numericUpDown_Delay;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox textBox_File_Name;
     }
 }
 

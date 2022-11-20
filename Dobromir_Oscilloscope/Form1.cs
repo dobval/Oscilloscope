@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
 
 namespace Dobromir_Oscilloscope
@@ -18,62 +19,90 @@ namespace Dobromir_Oscilloscope
         static Rectangle pointRectOld = Rectangle.Empty;
         static Point pt1Old,pt2Old;
         static double total_distance = 0;
+        static Random gen = new Random();
+        static StreamWriter sw;
 
         private void Draw_Click(object sender, EventArgs e)
         {
-            // Get the rectangle and point coordinates from the form
-            var x_Min = this.numericUpDown_X_Min.Value;
-            var x_Max = this.numericUpDown_X_Max.Value;
-            var y_Min = this.numericUpDown_Y_Min.Value;
-            var y_Max = this.numericUpDown_Y_Max.Value;
-            var x = this.numericUpDown_X.Value;
-            var y = this.numericUpDown_Y.Value;
-
-            var minX = x_Min;
-            var maxX = x_Max;
-            var minY = y_Min;
-            var maxY = y_Max;
-            var diagramWidth = maxX - minX;
-            var diagramHeight = maxY - minY;
-            var ratio = 1.0m;
-            var ratioX = 1.0m;
-            var ratioY = 1.0m;
-            var offset = 10;
-            if (diagramWidth != 0 && diagramHeight != 0)
+            //Get the point count, delay and file name
+            var numberOfLoops = (int)this.numericUpDown_Point_Count.Value;
+            var delay = (int)this.numericUpDown_Delay.Value * 1000;
+            string fileName = textBox_File_Name.Text;
+            if (fileName != string.Empty)
             {
-                ratioX = (pictureBox.Width - 2 * offset - 1) / diagramWidth;
-                ratioY = (pictureBox.Height - 2 * offset - 1) / diagramHeight;
-                ratio = Math.Min(ratioX, ratioY);
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+                saveFileDialog.AddExtension = true;
+                saveFileDialog.DefaultExt = "txt";
+                saveFileDialog.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+                saveFileDialog.FileName = fileName;
+                if(saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    try
+                    {
+                        sw = new StreamWriter(saveFileDialog.FileName);
+                    }
+                    catch (Exception error)
+                    {
+                        MessageBox.Show("Error: File already exists.");
+                    }
+                }
             }
 
-
-            // Calculate the rectangle coordinates
-            var rectLeft = offset + (int)Math.Round(x_Min * ratio);
-            var rectTop = offset + (int)Math.Round(y_Min * ratio);
-            var rectWidth = (int)Math.Round(Math.Abs(x_Min + x_Max) * ratio);
-            var rectHeight = (int)Math.Round(Math.Abs(y_Min + y_Max) * ratio);
-            var rect = new Rectangle(rectLeft, rectTop, rectWidth, rectHeight);
-
-            // Calculate the point coordinates
-            var pointX = offset + (int)Math.Round(x * ratio);
-            var pointY = offset + (int)Math.Round((y_Max - y) * ratio);
-            var pointRect = new Rectangle(pointX - 3, pointY - 3, 5, 5);
-
-
-            // Draw the rectangle and point
-            var g = pictureBox.CreateGraphics();
-
-            if (g_new != null)
+            for (int i = 0; i < numberOfLoops; i++)
             {
-                g = g_new;
-            }
+                System.Threading.Thread.Sleep(delay);
+                //Generate coordinates (x,y)
+                var x = gen.Next(0, 100);
+                var y = gen.Next(0, 100);
+                sw.WriteLine("({0}, {1})", x, y);
 
-            if (!isGraphDrawn)
-                Draw_Graph(ratio, offset, x_Max, x_Min, y_Max, y_Min, rectLeft, rect, g);
-            isGraphDrawn = true;
-            Draw_Point(pointRect, g);
-            Draw_Line(pointRect, g, ratio, ratioX, ratioY, rect);
-            g_new = g;
+                var minX = 0;
+                var maxX = 100;
+                var minY = 0;
+                var maxY = 100;
+                var diagramWidth = maxX - minX;
+                var diagramHeight = maxY - minY;
+                var ratio = 1.0m;
+                var ratioX = 1.0m;
+                var ratioY = 1.0m;
+                var offset = 10;
+                if (diagramWidth != 0 && diagramHeight != 0)
+                {
+                    ratioX = (pictureBox.Width - 2 * offset - 1) / diagramWidth;
+                    ratioY = (pictureBox.Height - 2 * offset - 1) / diagramHeight;
+                    ratio = Math.Min(ratioX, ratioY);
+                }
+
+
+                // Calculate the rectangle coordinates
+                var rectLeft = offset + (int)Math.Round(minX * ratio);
+                var rectTop = offset + (int)Math.Round(minY * ratio);
+                var rectWidth = (int)Math.Round(Math.Abs(minX + maxX) * ratio);
+                var rectHeight = (int)Math.Round(Math.Abs(minY + maxY) * ratio);
+                var rect = new Rectangle(rectLeft, rectTop, rectWidth, rectHeight);
+
+                // Calculate the point coordinates
+                var pointX = offset + (int)Math.Round(x * ratio);
+                var pointY = offset + (int)Math.Round((maxY - y) * ratio);
+                var pointRect = new Rectangle(pointX - 3, pointY - 3, 5, 5);
+
+
+                // Draw the rectangle and point
+                var g = pictureBox.CreateGraphics();
+
+                if (g_new != null)
+                {
+                    g = g_new;
+                }
+
+                if (!isGraphDrawn)
+                    Draw_Graph(ratio, offset, maxX, minX, maxY, minY, rectLeft, rect, g);
+                isGraphDrawn = true;
+                Draw_Point(pointRect, g);
+                Draw_Line(pointRect, g, ratio, ratioX, ratioY, rect);
+                g_new = g;
+            }
+            
         }
 
         private void Draw_Graph(decimal ratio, int offset, decimal x_Max, decimal x_Min, decimal y_Max, decimal y_Min, int rectLeft, Rectangle rect, Graphics g)
