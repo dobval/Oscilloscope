@@ -54,7 +54,8 @@ namespace Dobromir_Oscilloscope
                 //Generate coordinates (x,y)
                 var x = gen.Next(0, 100);
                 var y = gen.Next(0, 100);
-                sw.WriteLine("({0}, {1})", x, y);
+                if (sw != null)
+                    sw.WriteLine("({0}, {1})", x, y);
 
                 var minX = 0;
                 var maxX = 100;
